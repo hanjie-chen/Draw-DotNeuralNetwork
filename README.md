@@ -16,5 +16,5 @@ the configure of the dot network should change in the code.
 
 try to improve the usage
 
-
+try to contract the repository author tell him the improve
 
