@@ -4,9 +4,9 @@ This is a simple Python script to generate pictures of a feed-forward neural net
 
 improvement by Plain
 
-# Requiremnet
+# Requiremnets
 
-your system should have `make` and `graphviz`
+your system should have `make` and `graphviz` installed
 
 if you use windows system you can use `choco` command to install these 2 package:
 
@@ -27,15 +27,12 @@ https://github.com/chocolatey/choco
 
 # Usage
 
-just type `make` and then it will generate the network.dot and according to the network.dot to generate the network.png.
+```powershell
+make               		: Use default layers [3, 5, 4, 2]"
+make layers=[5,3,2,1] 	: Specify custom layers"
+```
 
-`make clean` will delete these 2 files
+`make clean` will delete .dot and .png file
 
-the configure of the dot network should change in the code.
 
-# Next step
-
-try to improve the usage
-
-try to contract the repository author tell him the improve
 

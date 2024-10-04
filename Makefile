@@ -17,15 +17,18 @@ endif
 # Script name
 SCRIPT = dot_neuralnetwork_graph.py
 
+# Default layers
+layers ?= [3, 5, 4, 2]
+
 # Phony targets
-.PHONY: all clean help
+.PHONY: all clean help network.png
 
 # Default target
 all: network.png
 
 # Generate the network graph
 network.png: $(SCRIPT)
-	$(PYTHON) $(SCRIPT)
+	$(PYTHON) $(SCRIPT) $(layers)
 
 # Clean up generated files
 clean:
@@ -35,6 +38,10 @@ clean:
 # Help target
 help:
 	@echo "Available targets:"
-	@echo "  all    : Generate the neural network graph (default)"
-	@echo "  clean  : Remove generated files"
-	@echo "  help   : Show this help message"
+	@echo "  all                : Generate the neural network graph (default)"
+	@echo "  clean              : Remove generated files"
+	@echo "  help               : Show this help message"
+	@echo ""
+	@echo "Usage:"
+	@echo "  make               : Use default layers [3, 5, 4, 2]"
+	@echo "  make layers=[5,3,2,1] : Specify custom layers"

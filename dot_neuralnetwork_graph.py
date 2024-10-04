@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
-import os
+import sys
 import subprocess
+import ast
 
-def generate_network_dot(output_file='network.dot', image_file='network.png'):
-    layers = [2, 2, 1]
+def parse_layers(layers_str):
+    try:
+        return ast.literal_eval(layers_str)
+    except:
+        print(f"Error: Invalid layer format. will use default layers.")
+        return [3, 5, 4, 2]
 
+def generate_network_dot(layers, output_file='network.dot', image_file='network.png'):
     layers_str = ["Input"] + ["Hidden"] * (len(layers) - 2) + ["Output"]
     layers_col = ["none"] + ["none"] * (len(layers) - 2) + ["none"]
     layers_fill = ["black"] + ["gray"] * (len(layers) - 2) + ["black"]
@@ -58,4 +64,8 @@ def generate_network_dot(output_file='network.dot', image_file='network.png'):
         print("Error: 'dot' command not found. Make sure Graphviz is installed and 'dot' is in your PATH.")
 
 if __name__ == "__main__":
-    generate_network_dot()
+    if len(sys.argv) > 1:
+        layers = parse_layers(sys.argv[1])
+    else:
+        layers = [3, 5, 4, 2]  # default
+    generate_network_dot(layers)
