@@ -36,3 +36,9 @@ make layers=[5,3,2,1] 	: Specify custom layers"
 
 
 
+# Furture plan
+
+try to add a feature that:
+
+when type `make layers=[n,m,l]`, it will create a 3 layer general neural network topology, that shows Input layers n nodes, Hiddens layers m nodes, and output layers l nodes. like follwoing:
+
